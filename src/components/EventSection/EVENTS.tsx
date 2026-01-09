@@ -18,7 +18,7 @@ export type Event = {
 const EVENTS: Event[] = [
     {
         image: Event1,
-        link: "https://www.cathaylife.com.tw/cathaylife/webStatics/loan/loan/index.html?utm_campaign=2026new&utm_source=OfficialMb&utm_medium=b2e-BN",
+        link: "https://www.cathaylife.com.tw/cathaylife/webStatics/App/new_event/index.html?utm_campaign=2026new&utm_source=OfficialMb&utm_medium=b2e-BN",
         title: "【首次登入】5,000組100點小樹點(生活)等你抽！",
         infoItems: [
             {
