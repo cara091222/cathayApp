@@ -1,0 +1,330 @@
+@import '../../styles/responsive.scss';
+
+
+.container {
+    position: relative;
+    width: 100%;
+    padding-top: 120px;
+
+    @include lg() {
+        padding-top: 80px;
+        padding-bottom: 20px;
+    }
+    
+    @include md() {
+        // height: 200vh;
+        height: fit-content;
+        padding-top: 20px;
+        // padding-top: 80px;
+    }
+
+}
+
+.phoneSlider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 620px;
+    overflow: hidden;
+    perspective: 2000px; // 3D 視角
+    perspective-origin: center center;
+    // 允許垂直和水平滑動，但優先處理垂直滾動
+    touch-action: pan-y pan-x;
+
+
+    @include lg() {
+        height: 580px;
+    }
+
+    @include md() {
+        padding-top: 0;
+        height: calc(40vw * 650/410);
+        min-height: calc(230px * 650/410);
+    }
+
+    @include sm() {
+        height: calc(45vw * 650/410);
+        min-height: calc(230px * 650/410);
+    }
+
+    @media (min-width: 1200px) and (max-height: 780px) {
+        height: 500px;
+    }
+
+    :global {
+        .slide-title {
+            opacity: 0;
+
+            @include md() {
+                opacity: 0 !important;
+            }
+        }
+
+        .slide-hint {
+            opacity: 0;
+        }
+
+        .slide-bg {
+            filter: drop-shadow(0px 7px 20px rgba(0, 0, 0, 0.21));
+
+            @include md() {
+                filter: drop-shadow(0px 7px 10px rgba(0, 0, 0, 0.21));
+            }
+        }
+    }
+}
+
+.controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+
+    @media (max-height: 780px) {
+        margin-top: 0px;
+    }
+
+    @include md() {
+        gap: 0;
+        bottom: 0;
+        margin-top: 10px;
+    }
+
+
+}
+
+.controlButton {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: transform 0.2s ease;
+
+    @include md() {
+        width: 30px;
+        height: 30px;
+    }
+
+    :global {
+        .ring {
+            stroke-dasharray: 144px;
+            stroke-dashoffset: 0px;
+            stroke-linecap: round;
+            stroke-width: 1px;
+            transform: rotate(-90deg);
+            transform-origin: center;
+            opacity: 0;
+        }
+
+        .dot {
+            fill: #EBEDEB;
+            stroke: none;
+        }
+    }
+
+
+}
+
+.controlButton.active {
+    :global(.ring) {
+        transition: opacity 0.2s ease;
+        opacity: 1;
+    }
+
+    :global(.dot) {
+        fill: #29A86F;
+        stroke: none;
+
+        transition: all 0.2s ease;
+    }
+}
+
+
+
+.slideWrapper {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform-style: preserve-3d; // 保持 3D 變換
+    transform-origin: center center;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease;
+    will-change: transform, opacity;
+    cursor: pointer;
+    // 允許垂直和水平滑動
+    touch-action: pan-y pan-x;
+    -webkit-touch-callout: none; // 防止長按選單
+    -webkit-user-select: none; // 防止文字選取
+    user-select: none;
+
+    :global {
+        .slide-title {
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        .slide-hint {
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+    }
+
+    // 當 data-show-hint="true" 時顯示 hint
+    &[data-show-hint="true"] {
+        :global(.slide-hint) {
+            opacity: 1;
+        }
+    }
+
+    @include md() {
+        // 手機版：移除 3D 變換，使用 2D 水平排列
+        transform-style: flat;
+
+    }
+}
+
+
+.slide {
+    height: 700px;
+    position: relative;
+    aspect-ratio: 410/648;
+    isolation: isolate;
+
+
+    @include md() {
+        width: 44vw;
+        height: auto;
+        min-width: 230px;
+    }
+
+    @include sm() {
+        width: 45vw;
+        height: auto;
+        min-width: 230px;
+    }
+
+
+    @media (min-width: 1200px) and (max-height: 780px) {
+        height: 560px;
+    }
+
+
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+    }
+
+    :global(.slide-grey-mask) {
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+
+        // add backdrop filter
+    }
+}
+
+.mobileSlideTitles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    animation: slideIn 1s ease 1;
+    margin-bottom: 50px;
+
+    @media (max-height: 780px) {
+        margin-bottom: 20px;
+    }
+
+    @include sm() {
+        margin-bottom: 20px;
+        gap: 0;
+    }
+
+    h3 {
+        font: var(--text-h2);
+
+        @include sm {
+            font-size: 28px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 44px; /* 157.143% */
+            letter-spacing: 1px;
+        }
+    }
+
+    p {
+        color: var(--sec);
+        font-size: 24px;
+        font-weight: 400;
+        letter-spacing: 1px;
+
+        @include sm {
+            font-size: 22px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            letter-spacing: 1px;
+        }
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.center {
+    opacity: 1 !important;
+    animation: fadeIn 0.6s ease;
+    // 移除 pointer-events: none，允許觸控事件
+    // pointer-events: none; // 已移除，以允許滑動手勢
+
+    :global(.slide-grey-mask) {
+        opacity: 0;
+    }
+
+    // 手機版時允許觸控事件
+    @include md() {
+        pointer-events: auto;
+    }
+}
+
+@keyframes ringCountdown {
+    from {
+        stroke-dashoffset: 0px;
+    }
+    to {
+        stroke-dashoffset: 144px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

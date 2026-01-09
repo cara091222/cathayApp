@@ -1,0 +1,78 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body * {
+  box-sizing: border-box;
+  font-family: 'Montserrat', 'Noto Sans TC', sans-serif;
+}
+
+:root {
+  --text-h1: normal 700 40px/1.4  'Montserrat', 'Noto Sans TC', sans-serif;
+  --text-h2: normal 700 32px/1.4  'Montserrat', 'Noto Sans TC', sans-serif;
+  --text-h3: normal 400 24px/1.4  'Montserrat', 'Noto Sans TC', sans-serif;
+  --text-h4: normal 400 20px/1.4  'Montserrat', 'Noto Sans TC', sans-serif;
+  --text-h5: normal 400 18px/1.4  'Montserrat', 'Noto Sans TC', sans-serif;
+  --text-body-l: normal 400 16px/1.4  'Montserrat', 'Noto Sans TC', sans-serif;
+  --text-body-p: normal 400 16px/1.5  'Montserrat', 'Noto Sans TC', sans-serif;
+  --text-body-m: normal 400 14px/1.4  'Montserrat', 'Noto Sans TC', sans-serif;
+  --text-caption: normal 400 12px/1.4  'Montserrat', 'Noto Sans TC', sans-serif;
+
+  --main: #1F1F1F;
+  --sec: #5C5C5C;
+  --third: #787878;
+  --main-green: #29A86F;
+  --background-green: #FAFAFA;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --text-h1: normal 700 32px/1.4  'Montserrat', 'Noto Sans TC', sans-serif;
+
+  }
+}

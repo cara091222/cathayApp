@@ -1,0 +1,291 @@
+@import '@/styles/responsive.scss';
+
+.phoneAnimation {
+    width: 988.026px;
+    height: 697.928px;
+    position: relative;
+    margin-top: 100px;
+
+
+
+    @include xl() {
+        transform: scale(0.8);
+    }
+
+
+    @include lg() {
+        margin-top: 0;
+        // left: 0;
+        // width: 100vw;
+        // --ratio: 921/725;
+        // top: 100px;
+
+        // height: calc(50vw * 725/921 + 80px);
+        // flex-shrink: 0;
+        // flex-basis: auto;
+        // left: unset;
+        // right: unset;
+        // bottom: unset;
+        // position: relative;
+
+        // transform: scale(1);
+
+    }
+
+    @include md() {
+        margin-top: 0;
+        width: 100vw;
+        --ratio: 921/725;
+        height: calc(50vw * 725/921 + 80px);
+        transform: scale(1);
+        top: 100px;
+        // height: calc(60vw * 725/921 + 80px);
+    }
+
+    @include xs() {
+        top: 0;
+        height: calc(84vw * 370/337 + 80px);
+    }
+
+    @include tiny () {
+        top: 40px;
+    }
+
+
+
+    .phoneLeft {
+        position: absolute;
+        bottom: 0;
+        left: 120px;
+        opacity: 0;
+        transform: translate(-60px, -60px);
+        transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+
+        width: 709px;
+        height: 559px;
+        object-fit: contain;
+
+        @include xxl() {
+            left: 14%;
+
+        }
+
+        @include lg() {
+            left: 8%;
+            bottom: 20%;
+            width: 45vw;
+            height: auto;
+        }
+
+        @include md() {
+            height: auto;
+
+            width: 70vw;
+            bottom: -30%;
+            left: 4%;
+        }
+
+
+        @include xs() {
+            width: 94%;
+            bottom: -3%;
+            left: 33%;
+            transform: translate(-60%, -100px);
+        }
+
+    }
+
+    .phoneRight {
+        position: absolute;
+        top: -40px;
+        left: 36%;
+        opacity: 0;
+        transform: translate(10%, -10%);
+        transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        width: 709px;
+        height: 558px;
+        object-fit: contain;
+
+
+        @include xxl() {
+            left: 40%;
+        }
+
+        @include lg() {
+            display: none;
+        }
+
+        @include md() {
+            display: none;
+        }
+
+        @include xs() {
+            display: none;
+        }
+
+    }
+}
+
+.phoneRightMobile {
+    composes: phoneRight;
+
+    display: none;
+    left: 0;
+    transform: translate(20%, -20%);
+    width: 45vw !important;
+
+    @include lg() {
+        display: block !important;
+        //  width: 70vw !important;
+    }
+
+    @include md() {
+        width: 70vw !important;
+    }
+
+
+    @include xs() {
+        width: 94% !important;
+        left: 65%;
+        display: block !important;
+        transform: translate(-40%, -10%);
+    }
+}
+
+.phoneText {
+    position: absolute;
+    bottom: 172px;
+    left: 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+    font: var(--text-h3);
+    font-weight: 600;
+    color: var(--third);
+
+    @include xxl() {
+        left: 4%;
+        gap: 24px;
+    }
+
+    @include lg() {
+        left: 4%;
+        font-size: 20px;
+        gap: 14px;
+        bottom: 30%;
+
+    }
+
+    @include md() {
+        bottom: unset;
+        top: -5%;
+        left: 24%;
+        transform: translateY(-40%);
+        font-size: 24px;
+        gap: 14px;
+    }
+
+    @include xs() {
+        font-size: 20px;
+        transform: unset;
+        left: 28px;
+        top: 15px;
+    }
+
+    @include tiny() {
+        top: -8%;
+    }
+
+    @include st() {
+        font-size: 18px;
+        gap: 6px;
+    }
+
+    p:nth-child(2) {
+        padding-left: 44px;
+
+        @include lg() {
+            padding-left: 10px;
+        }
+    }
+
+    p:nth-child(3) {
+        padding-left: 88px;
+
+        @include lg() {
+            padding-left: 20px;
+        }
+    }
+
+    .textLine1,
+    .textLine2,
+    .textLine3 {
+        opacity: 0;
+        transform: translateX(-40px);
+        transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+    }
+}
+
+// 動畫 class
+.fadeIn {
+    opacity: 1 !important;
+}
+
+// 動畫延遲設定
+.phoneLeft.fadeIn {
+    transition-delay: 0ms;
+    transform: translate(0, 0) !important;
+
+    @include xs() {
+        transform: translate(-50%, 5%) !important;
+    }
+
+    @include st() {
+        transform: translate(-50%, 14%) !important;
+        ;
+    }
+}
+
+.phoneRight.fadeIn {
+    transition-delay: 300ms;
+    transform: translate(0, 0);
+
+    @include lg() {
+        left: 34%;
+    }
+
+    @include md() {
+        left: 30%;
+        transform: translate(0, -13%);
+    }
+
+    @include xs() {
+        left: 65%;
+        transform: translate(-50%, -7%);
+    }
+
+    @include tiny() {
+        left: 67%;
+        transform: translate(-50%, -15%);
+    }
+
+    @include st() {
+        left: 67%;
+        transform: translate(-50%, -20%);
+    }
+}
+
+.textLine1.fadeIn {
+    transition-delay: 1000ms;
+    transform: translateY(0) !important;
+}
+
+.textLine2.fadeIn {
+    transition-delay: 1400ms;
+    transform: translateY(0) !important;
+}
+
+.textLine3.fadeIn {
+    transition-delay: 1800ms;
+    transform: translateY(0) !important;
+}

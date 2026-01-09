@@ -1,0 +1,70 @@
+@import '@/styles/responsive.scss';
+
+.container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  @include lg() {
+    height: 100%;
+  }
+
+  @include md() {
+    height: 100vh;
+  }
+
+  // 底部白色漸層，平滑過渡到下方白色頁面
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(to bottom, transparent 0%, rgba(255, 255, 255, 0.3) 30%, rgba(255, 255, 255, 0.7) 60%, rgba(255, 255, 255, 1) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .desktopBG {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+
+    @include md() {
+      display: none;
+    }
+  }
+
+  .mobileBG {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+
+    @include md() {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,88 @@
+@import '@/styles/responsive.scss';
+
+.faqItem {
+    width: 100%;
+    padding: 20px;
+
+    border-bottom: 1px solid #DADADA;
+    transition: border-bottom-color 0.3s ease;
+
+    @include md() {
+        padding: 15px;
+    }
+
+    svg {
+        transition: transform 0.3s ease-out;
+    }
+
+    .faqTitle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 27px; /* 135% */
+        letter-spacing: 1px;
+
+        cursor: pointer;
+        transition: padding-bottom 0.3s ease;
+
+        @include md() {
+            font-size: 18px;
+            align-items: flex-start;
+            gap: 10px;
+        }
+    }
+
+    .faqContent {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.4s ease-out, opacity 0.2s ease-out 0.1s, padding-top 0.3s ease-out, padding-bottom 0.3s ease-out;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .faqContentInner {
+        color: var(--sec);
+        font: var(--text-body-p);
+        padding-top: 20px;
+        padding-bottom: 20px;
+        white-space: pre-wrap;
+
+        a {
+            color: var(--main-green);
+        }
+
+        @include md() {
+            font-size: 16px;
+        }
+    }
+
+    .faqArrowIcon {
+        transform-origin: center;
+        transition: transform 0.3s ease-out;
+    }
+
+    &.open {
+        border-bottom: 1px solid var(--main-green);
+        
+        .faqTitle {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        .faqArrowIcon {
+            transform: scaleY(-1);
+        }
+
+        .faqContent {
+            opacity: 1;
+            // padding-top: 20px;
+            // padding-bottom: 20px;
+        }
+    }
+}
+

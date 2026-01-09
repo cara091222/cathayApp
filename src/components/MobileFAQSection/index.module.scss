@@ -1,0 +1,132 @@
+.mobileFAQSection {
+    margin-top: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 100px;
+    
+
+    position: relative;
+
+    h3 {
+        text-align: center;
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 44px; /* 157.143% */
+        letter-spacing: 1px;
+        margin-bottom: 14px;
+    } 
+}
+
+.decoSpot {
+    position: absolute;
+    top: 4%;
+    right: 0;
+    z-index: -1;
+}
+
+.faqButtonContainer {
+    position: relative;
+    border-radius: 20px;
+    background: var(--main-green);
+    padding: 20px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.glider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--w, 0px);
+    height: 100%;
+    transform: translateX(var(--x, 0px));
+    background: white;
+    border-radius: 100px;
+    box-shadow: 0 4px 10px 0 rgba(2, 131, 61, 0.50);
+    transition:
+        transform 0.35s cubic-bezier(.2,.8,.2,1),
+        width 0.35s cubic-bezier(.2,.8,.2,1);
+    will-change: transform, width;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.arrowLeft {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 80px;
+    height: 100%;
+    z-index: 2;
+    background-image: linear-gradient(to left, transparent 0%, var(--main-green));
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+    color: white;
+    padding-left: 8px;
+
+    &.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+.arrowRight {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 80px;
+    height: 100%;
+    z-index: 2;
+    background-image: linear-gradient(to right, transparent 0%, var(--main-green));
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+    color: white;
+    padding-right: 8px;
+    &.hidden {
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+.faqButtonList {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    // hide scrollbar
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.faqButton {
+    all: unset;
+    flex-shrink: 0;
+    padding: 10px 15px;
+    color: white;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 1px;
+    border-radius: 100px;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.35s cubic-bezier(.2,.8,.2,1);
+}
+
+.activeFAQButton {
+    color: var(--main);
+}

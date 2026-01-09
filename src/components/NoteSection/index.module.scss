@@ -1,0 +1,102 @@
+@import '../../styles/responsive.scss';
+
+.noteSection {
+    padding: 80px 0;
+    background-color: #FAFAFA;
+    width: 100%;
+    position: relative;
+
+
+
+    @include md() {
+        padding: 30px 20px;
+    }
+}
+
+.noteContainer {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+
+    margin: 0 246px;
+
+    @include lg() {
+        margin: 0 60px;
+    }
+
+
+
+    @include md() {
+        margin: 0;
+        gap: 0;
+        flex-direction: column;
+    }
+}
+
+.title {
+    font: var(--text-h4);
+    color: var(--main);
+    text-align: center;
+    letter-spacing: 1px;
+    line-height: 27px;
+    margin: 0;
+    flex-shrink: 0;
+
+    @include md() {
+        font-weight: 400;
+        font: var(--text-h4);
+        color: var(--main);
+
+        border-bottom: 4px solid var(--main-green);
+        padding-bottom: 10px;
+    }
+}
+
+.content {
+    border-left: 5px solid var(--main-green);
+    padding-left: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 1294px;
+    box-sizing: border-box;
+    color: var(--sec);
+
+    @include md() {
+        border-left: 0;
+        padding-left: 0;
+        width: 100%;
+        padding-top: 20px;
+        font-size: 14px;
+    }
+}
+
+.list {
+    font: var(--text-body-m);
+    color: var(--sec);
+    letter-spacing: 1px;
+    line-height: 22px;
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    counter-reset: chinese-counter;
+    white-space: pre-wrap;
+
+    li {
+        margin-bottom: 0;
+        counter-increment: chinese-counter;
+        position: relative;
+        padding-left: 30px;
+        
+        &::before {
+            content: counter(chinese-counter, cjk-ideographic) '、';
+            position: absolute;
+            left: 0;
+        }
+        
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+

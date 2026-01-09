@@ -1,0 +1,57 @@
+@import '@/styles/responsive.scss';
+
+.app {
+    overflow: hidden;
+}
+
+.blocksContainer {
+    position: relative;
+    isolation: isolate;
+}
+
+.waveReverse {
+    position: absolute;
+    top: 340px;
+    width: 100%;
+    z-index: -1;
+    pointer-events: none;
+
+    @include md() {
+        display: none;
+    }
+}
+
+.mobileWaveReverse {
+    position: absolute;
+    top: 20%;
+    width: 100%;
+    z-index: -1;
+    pointer-events: none;
+    display: none;
+
+    @include md() {
+        display: block;
+    }
+}
+
+.ring {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 30vw;
+    transform: rotate(30deg);
+    pointer-events: none;
+    z-index: -1;
+
+    @include md() {
+        display: none;
+    }
+}
+
+.spot1 {
+    position: absolute;
+    width: 800px;
+    right: 100px;
+    bottom: -10%;
+    pointer-events: none;
+}

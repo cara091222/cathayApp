@@ -1,0 +1,321 @@
+@import '@/styles/responsive.scss';
+
+.heroSectionWrapper {
+    position: relative;
+    padding-top: 76px;
+
+    // @include lg() {
+    //     padding-top: px;
+    // }
+
+}
+
+.featuresSection {
+    // padding-top: 60px;
+    margin-top: 60px;
+}
+
+.heroSection {
+    height: calc(100dvh - 76px);
+    position: relative;
+    
+
+    @include md() {
+        // height: unset;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        justify-content: flex-end;
+        padding-top: 100px;
+        padding-bottom: 120px;
+    }
+
+    @media screen and (max-width: 800px) {
+        padding-top: 0;
+    }
+
+    @include sm() {
+        padding-bottom: 0;
+    }
+
+}
+
+.heroAnimationWrapper {
+    display: flex;
+    position: relative;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    height: 100%;
+    justify-content: center;
+    gap: 0px;
+    align-items: center;
+    padding-top: 100px;
+
+    @include xl() {
+        max-width: 1280px;
+    }
+
+    @include lg() {
+        // ≤ 1280px 時恢復預設
+        max-width: unset;
+        margin: unset;
+    }
+
+    @include md() {
+        padding-top: 0;
+        display: flex;
+        flex-direction: column-reverse;
+        padding-bottom: 100px;
+        gap: 50px;
+    }
+
+    @include sm () {
+        gap: 20px;
+    }
+
+    @include xs () {
+        gap: 40px;
+        padding-top: 100px;
+    }
+
+    @include st () {
+        padding-top: 80px;
+    }
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-right: 100px;
+    flex-shrink: 0;
+
+    // position: absolute;
+    // right: 17vw;
+    // top: 50%;
+    // transform: translateY(-50%);
+
+    // @include xxl() {
+    //     right: 14vw;
+    // }
+
+    @include xl() {
+        // right: 10vw;
+    }
+    
+    @include lg() {
+        right: 8vw;
+    }
+
+    @include md() {
+        position: relative;
+        top: unset;
+        transform: translateY(0);
+        width: 100%;
+        padding: 0 20px;
+        align-items: center;
+        gap: 4px;
+        right: unset;
+    }
+
+
+    h1 {
+        font: var(--text-h1);
+        color: var(--main);
+
+        @include lg() {
+            font-size: 50px;
+            text-align: center;
+        }
+
+        @include xs () {
+            font-size: 32px;
+        }
+    }
+
+    p {
+        font: var(--text-h2);
+        color: var(--sec);
+
+        @include md() {
+            font-size: 28px;
+            text-align: center;
+        }
+
+        @include tiny() {
+            font-size: 24px;
+        }
+    }
+}
+
+.downloadButton {
+    all: unset;
+    display: none;
+
+    @include md() {
+        margin-top: 20px;
+        display: flex;
+        background-color: var(--main-green);
+        color: white;
+        border-radius: 100px;
+        background: var(--main-green);
+        padding: 10px 30px;
+
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 27px; /* 150% */
+        letter-spacing: 1.5px;
+        cursor: pointer;
+    }
+}
+
+.scrollDown {
+    position: absolute;
+    bottom: 8vh;
+    right: 68px;
+
+
+    @include xxl() {
+        bottom: 40px;
+        right: 68px;
+    }
+
+    @include md() {
+        right: 20px;
+        bottom: 120px;
+    }
+
+    @include sm() {
+        bottom: 5%;
+    }
+}
+
+.decos {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    // z-index: -1;
+}
+
+.decoRing1 {    
+    position: absolute;
+    top: -8%;
+    right: 2%;
+    width: 30vw;
+    aspect-ratio: 570/560;
+    object-fit: contain;
+    pointer-events: none;
+    transform: rotate(20deg);
+    z-index: 1;
+
+    @include md() {
+        top: -7%;
+        right: -1%;
+        width: 50vw;
+        height: auto;
+    }
+
+    @include xs() {
+        top: 0;
+        // right: -1%;
+        // width: 50vw;
+        // height: auto;
+    }
+
+}
+
+.decoRing2 {
+    position: absolute;
+    bottom: 0%;
+    left: -16vw;
+    width: 55vw;
+    pointer-events: none;
+
+    @include md() {
+        display: none;
+    }
+
+}
+
+.mobileDecoRing2 {
+    position: absolute;
+    bottom: unset;
+    top: 55%;
+    left: 0;
+    object-fit: contain;
+
+    display: none;
+
+    @include md() {
+        display: block;
+    }
+}
+
+.decoBigRing {
+    position: absolute;
+    bottom: -10%;
+    left: -34%;
+    width: 120vw;
+    max-width: 2000px;
+    height: auto;
+    pointer-events: none;
+
+    @include xl() {
+        left: -50%;
+    }
+
+    @include md() {
+        display: none;
+    }
+}
+
+.decoWave {
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+
+    @include md() {
+        bottom: 8%;
+        display: none;
+    }
+}
+
+.mobileDecoWave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+    display: none;
+
+
+    @include md() {
+        display: block;
+    }
+}
+
+.mobileDecoRing {
+    position: absolute;
+    bottom: 32%;
+    left: 0;
+    width: auto;
+    pointer-events: none;
+    display: none;
+
+    @include md() {
+        display: block;
+        width: 50%;
+        bottom: 23%;
+    }
+
+    @include xs() {
+        width: 52%;
+        bottom: 28%;
+    }
+}
