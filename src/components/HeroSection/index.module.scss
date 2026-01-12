@@ -416,7 +416,7 @@ $breakpoints: ('jumbo': 1600px,
             @media (max-width: 575.98px) {
                 // sm
                 width: 95vw;
-                left: -15%;
+                left: -22%;
                 top: 42%;
             }
 
@@ -463,7 +463,7 @@ $breakpoints: ('jumbo': 1600px,
             @media (max-width: 575.98px) {
                 // sm
                 width: 95vw;
-                right: -15%;
+                right: -22%;
                 top: 20%;
             }
 
@@ -513,6 +513,11 @@ $breakpoints: ('jumbo': 1600px,
             @media (max-width: 575.98px) {
                 top: 15%;
                 left: 12%;
+            }
+
+            @media (max-width: 376px) {
+                // top: 15%;
+                left: 6%;
             }
 
             p {
@@ -643,6 +648,16 @@ $breakpoints: ('jumbo': 1600px,
 
             @media (min-width: 992px) and (max-width: 1024.98px) {
                 font-size: 32px;
+            }
+
+            @media (max-width: 767.98px) {
+                font-size: 26px;
+                line-height: 40px;
+            }
+
+            @media (max-width: 390px) {
+                font-size: 24px;
+                line-height: 38px;
             }
         }
 

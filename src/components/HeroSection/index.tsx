@@ -11,7 +11,8 @@ import PhoneLeft from "../../assets/phone_left.webp";
 import PhoneRight from "../../assets/phone_right.webp";
 import PhoneRightMobile from "../../assets/phone_right_mobile.webp";
 
-import BgVideo from "../../assets/bg-desktop.mp4";
+// import BgVideo from "../../assets/bg-desktop.mp4";
+import GooeyBg from "./GooeyBg";
 
 function HeroSection() {
     return (
@@ -67,23 +68,17 @@ function HeroSection() {
                 <br />
                 數位保險體驗
                 </h2>
-                <a href="/" className={styles.btn}>
+                <a 
+                href="https://cathay.app.link/" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.btn}>
                 立即點擊下載
                 </a>
             </div>
             </div>
-
             {/* 背景影片 */}
-            <video
-            src={BgVideo} 
-            muted
-            playsInline
-            autoPlay
-            preload="auto"
-            className={styles["hero-video"]}
-            disablePictureInPicture
-            />
-
+            <GooeyBg />
             <div className={styles["scroll-down"]}>
             <span>SCROLL</span>
             <div className={styles["line-wrap"]}></div>
