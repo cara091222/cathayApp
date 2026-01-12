@@ -14,6 +14,18 @@ import PhoneRightMobile from "../../assets/phone_right_mobile.webp";
 // import BgVideo from "../../assets/bg-desktop.mp4";
 import GooeyBg from "./GooeyBg";
 
+function setRealVH() {
+  const height = window.visualViewport
+    ? window.visualViewport.height
+    : window.innerHeight;
+
+  document.documentElement.style.setProperty('--real-vh', `${height * 0.01}px`);
+}
+
+setRealVH();
+window.addEventListener('resize', setRealVH);
+
+
 function HeroSection() {
     return (
         <div className={styles.heroSectionWrapper}>
