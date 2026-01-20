@@ -238,13 +238,13 @@
     overflow: hidden;
     cursor: pointer;
 
-    &:hover {
-        color: var(--main-green, #29A86F);
+    // &:hover {
+    //     color: var(--main-green, #29A86F);
 
-        small {
-            border-color: var(--main-green, #29A86F);
-        }
-    }
+    //     small {
+    //         border-color: var(--main-green, #29A86F);
+    //     }
+    // }
 
     small {
         width: 24px;

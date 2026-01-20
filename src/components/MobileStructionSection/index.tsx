@@ -94,21 +94,23 @@ function MobileStructionSection() {
     };
 
     const handleDetailButtonClick = (index: number) => {
-        setCurrentDetailIndex(index);
+    setCurrentDetailIndex(index);
 
-        const detailButtonElement = detailButtonPanelRef.current?.querySelector(`.detail-button.button-${index}`) as HTMLButtonElement;
-        const detailButtonElementPositionRelativeToPanel = detailButtonElement.offsetLeft;
-        // scroll to the button
-        detailButtonPanelRef.current?.scrollTo({
-            left: detailButtonElementPositionRelativeToPanel-50,
+    const button = detailButtonRefs.current.get(index);
+    const container = detailButtonPanelRef.current;
+
+    if (button && container) {
+        // 計算置中位置
+        const scrollLeft = button.offsetLeft + button.offsetWidth / 2 - container.clientWidth / 2;
+
+        container.scrollTo({
+            left: scrollLeft,
             behavior: 'smooth'
         });
-        // 更新滑動下底線位置
-        const button = detailButtonRefs.current.get(index);
-        if (button) {
-            requestAnimationFrame(() => updateDetailGlider(button));
-        }
+
+        requestAnimationFrame(() => updateDetailGlider(button));
     }
+};
 
     useEffect(() => {
         const element = buttonPanelRef.current;
@@ -131,23 +133,24 @@ function MobileStructionSection() {
 
     const handleInstructionClick = (index: number) => {
         setCurrentInstruction(index);
-        // 當切換 instruction 時，重置 detail 到第一筆
         setCurrentDetailIndex(0);
 
-        // get button
-        const buttonElement = buttonPanelRef.current?.querySelector(`.button-${index}`) as HTMLButtonElement;
-        const buttonElementPositionRelativeToPanel = buttonElement.offsetLeft;
-        // scroll to the button
-        buttonPanelRef.current?.scrollTo({
-            left: buttonElementPositionRelativeToPanel - 20,
-            behavior: 'smooth'
-        });
-        // 更新滑動背景位置
         const button = buttonRefs.current.get(index);
-        if (button) {
+        const container = buttonPanelRef.current;
+
+        if (button && container) {
+            // 計算置中位置：
+            // 按鈕的 offsetLeft + (按鈕寬度 / 2) - (容器寬度 / 2)
+            const scrollLeft = button.offsetLeft + button.offsetWidth / 2 - container.clientWidth / 2;
+
+            container.scrollTo({
+                left: scrollLeft,
+                behavior: 'smooth'
+            });
+
             requestAnimationFrame(() => updateGlider(button));
         }
-    }
+    };
 
     const handleArrowRightClick = () => {
         const nextIndex = currentInstruction + 1;
@@ -215,6 +218,28 @@ function MobileStructionSection() {
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, [currentInstruction]);
+
+    // 當主 Instruction 改變時，自動捲動主 Tab
+    useEffect(() => {
+        const button = buttonRefs.current.get(currentInstruction);
+        const container = buttonPanelRef.current;
+        if (button && container) {
+            const scrollLeft = button.offsetLeft + button.offsetWidth / 2 - container.clientWidth / 2;
+            container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+            updateGlider(button);
+        }
+    }, [currentInstruction]);
+
+    // 當詳細步驟改變時，自動捲動詳細 Tab
+    useEffect(() => {
+        const button = detailButtonRefs.current.get(currentDetailIndex);
+        const container = detailButtonPanelRef.current;
+        if (button && container) {
+            const scrollLeft = button.offsetLeft + button.offsetWidth / 2 - container.clientWidth / 2;
+            container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+            updateDetailGlider(button);
+        }
+    }, [currentDetailIndex, currentInstruction]);
 
     return (
         <div className={styles.mobileStructionSection} id="instructions">

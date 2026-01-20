@@ -25,7 +25,7 @@ export const SLIDE_TITLES: SlideTitle[] = [
         sec: "即時掌握繳費資訊",
     },
     {
-        main: "保障資訊一目了然",
+        main: "保障資訊一目瞭然",
         sec: "讓保障內容更清晰透明",
     },
     {

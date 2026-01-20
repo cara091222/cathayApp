@@ -335,17 +335,17 @@ $breakpoints: ('jumbo': 1600px,
     'xs': 414px);
 
 @supports (height: 100svh) {
-  .hero-section {
-    min-height: 100svh;
-  }
+    .hero-section {
+        height: 100svh;
+    }
 }
 
 .hero-section {
     width: 100%;
-    height: calc(var(--real-vh) * 100);
-    height: auto;
+    height: 100vh;
+    height: calc(var(--real-vh, 1vh) * 100);
     position: relative;
-    overflow: hidden;
+    // overflow: hidden;
 
     &-container {
         // 替換 poa-center: 絕對居中
@@ -390,13 +390,13 @@ $breakpoints: ('jumbo': 1600px,
 
         @media (max-width: 575.98px) {
             // sm
-            height: 430px;
+            height: 330px;
         }
 
-        @media (max-width: 413.98px) {
-            // xs
-            height: 340px;
-        }
+        // @media (max-width: 413.98px) {
+        //     // xs
+        //     height: 340px;
+        // }
 
         .phone-left {
             position: absolute;
@@ -602,7 +602,8 @@ $breakpoints: ('jumbo': 1600px,
         gap: 15px;
         width: 100%;
         max-width: 430px;
-        padding-right: 0;
+        // 
+        padding: 0;
 
         @media (max-width: 1439.98px) {
             max-width: 390px;
@@ -689,6 +690,10 @@ $breakpoints: ('jumbo': 1600px,
             @media (min-width: 768px) and (max-width: 1024.98px) {
                 font-size: 24px;
                 padding: 15px 40px;
+            }
+
+            @media (max-width: 500px) {
+                margin-top: 5px;
             }
         }
     }

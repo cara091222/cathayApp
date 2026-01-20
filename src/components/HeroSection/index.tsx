@@ -1,4 +1,5 @@
 import styles from "./index.module.scss";
+import { useEffect } from "react";
 
 import DecoRing1 from "../../assets/deco-ring-1.png";
 import MobileDecoWave from "../../assets/mobile-deco-wave.svg";
@@ -14,19 +15,32 @@ import PhoneRightMobile from "../../assets/phone_right_mobile.webp";
 // import BgVideo from "../../assets/bg-desktop.mp4";
 import GooeyBg from "./GooeyBg";
 
-function setRealVH() {
-  const height = window.visualViewport
-    ? window.visualViewport.height
-    : window.innerHeight;
-
-  document.documentElement.style.setProperty('--real-vh', `${height * 0.01}px`);
-}
-
-setRealVH();
-window.addEventListener('resize', setRealVH);
-
-
 function HeroSection() {
+    useEffect(() => {
+    const setRealVH = () => {
+        const height =
+        window.visualViewport?.height ?? window.innerHeight;
+
+        document.documentElement.style.setProperty(
+        "--real-vh",
+        `${height * 0.01}px`
+        );
+    };
+
+    setRealVH();
+
+    const onFirstScroll = () => {
+        setRealVH();
+        window.removeEventListener("scroll", onFirstScroll);
+    };
+
+    window.addEventListener("scroll", onFirstScroll, { passive: true });
+
+    return () => {
+        window.removeEventListener("scroll", onFirstScroll);
+    };
+    }, []);
+
     return (
         <div className={styles.heroSectionWrapper}>
         <div className={styles.decos}>
@@ -54,7 +68,7 @@ function HeroSection() {
                 <div className={styles["phone-left"]}>
                 <img src={PhoneLeft} alt="Phone Left" />
                 </div>
-                <div className={styles["phone-right"]}>
+                <a href="https://www.cathaylife.com.tw/cathaylife/services/CathayLife-APP" className={styles["phone-right"]}>
                 <img
                     src={PhoneRight}
                     alt="Phone Right"
@@ -65,10 +79,10 @@ function HeroSection() {
                     alt="Phone Right"
                     className={styles["phone-right-mobile"]}
                 />
-                </div>
+                </a>
                 <div className={styles["desc-wrap"]}>
                 <p className={styles.descA}>掌握全家人的保單</p>
-                <p className={styles.descB}>保障資訊一目了然</p>
+                <p className={styles.descB}>保障資訊一目瞭然</p>
                 <p className={styles.descC}>保單借款隨借隨還</p>
                 </div>
             </div>
@@ -80,11 +94,12 @@ function HeroSection() {
                 <br />
                 數位保險體驗
                 </h2>
-                <a 
-                href="https://cathay.app.link/" 
+                <a
+                href="https://cathay.app.link/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={styles.btn}>
+                className={styles.btn}
+                >
                 立即點擊下載
                 </a>
             </div>
@@ -97,28 +112,28 @@ function HeroSection() {
             </div>
         </div>
         {/* <div className={styles.heroSection} id="hero">
-                        <GooeyBg />
-                        <div className={styles.heroAnimationWrapper}>
-                            <PhoneAnimation />
-                            <div className={styles.content}>
-                                <h1>國泰人壽App</h1>
-                                <p>
-                                    提供您簡單、聰明又安全的
-                                    <br />
-                                    數位保險體驗
-                                </p>
-                                <a
-                                    href="https://cathay.app.link/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className={styles.downloadButton}
-                                >
-                                    立即點擊下載
-                                </a>
+                            <GooeyBg />
+                            <div className={styles.heroAnimationWrapper}>
+                                <PhoneAnimation />
+                                <div className={styles.content}>
+                                    <h1>國泰人壽App</h1>
+                                    <p>
+                                        提供您簡單、聰明又安全的
+                                        <br />
+                                        數位保險體驗
+                                    </p>
+                                    <a
+                                        href="https://cathay.app.link/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className={styles.downloadButton}
+                                    >
+                                        立即點擊下載
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <ScrollDown className={styles.scrollDown} />
-                    </div> */}
+                            <ScrollDown className={styles.scrollDown} />
+                        </div> */}
         <div id="features" className={styles.featuresSection}>
             <PhoneSlider />
         </div>
